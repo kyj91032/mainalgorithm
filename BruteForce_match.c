@@ -27,3 +27,28 @@ int bf_match (const char txt[], const char pat[]) // 문자열 검색 알고리�
 		//검색 성공 시 함수는 pt - pp 즉, 텍스트 속 패턴의 첫 문자의 인덱스를 리턴함
 	return -1; // 그게 아니면 검색 실패이므로 -1 리턴
 }
+
+
+
+/*
+int bf_matchr (const char txt[], const char pat[])
+{
+	int txt_len = strlen(txt);
+	int pat_len = strlen(pat);
+
+	int pt = txt_len - pat_len;
+	int pp;
+
+	while (pt >= 0) {
+		pp = 0;
+		while (txt[pt] == pat[pp]) {
+			if (pp == pat_len - 1) //패턴 다 일치한 경우
+				return pt - pp;
+			pp++;
+			pt++;
+		}
+		pt = pt - pp - 1;
+	}
+	return -1;
+}
+*/
