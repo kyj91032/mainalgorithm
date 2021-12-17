@@ -14,9 +14,11 @@ int max(const int a[], int n) {
 }
 
 
-//파이썬에서.
+/*
+파이썬에서.
 
 data = list(map(int, input().split())
 min_value = a //초기값 부여
 for i in data:
 	min_value = min(min_value, i) //min(이전값, 현재값) 으로 계속 최솟값 최신화
+*/
