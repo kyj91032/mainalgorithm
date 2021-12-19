@@ -25,13 +25,11 @@ int bf_match (const char txt[], const char pat[]) // 문자열 검색 알고리�
 	if(pat[pp] == '\0') // 검색이 종료되고 pat이 '\0' 이라면 검색 성공이라는 것.
 		return pt - pp;
 		//검색 성공 시 함수는 pt - pp 즉, 텍스트 속 패턴의 첫 문자의 인덱스를 리턴함
-	return -1; // 그게 아니면 검색 실패이므로 -1 리턴
+	return -1; // 그게 아니면(txt[pt] == '\0'인 경우) 검색 실패이므로 -1 리턴
 }
 
 
-
-/*
-int bf_matchr (const char txt[], const char pat[])
+int bf_matchr (const char txt[], const char pat[]) //bruteforce match 뒤에서부터
 {
 	int txt_len = strlen(txt);
 	int pat_len = strlen(pat);
@@ -51,4 +49,17 @@ int bf_matchr (const char txt[], const char pat[])
 	}
 	return -1;
 }
+
+
+/*
+h = int(input())
+
+cnt = 0
+for i in range(n + 1):
+	for j in range(60):
+		for k in range(60):
+			if '3' in str(i) + str(j) + str(k):
+				cnt += 1
+print(cnt)
 */
+
