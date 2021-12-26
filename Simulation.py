@@ -1,4 +1,4 @@
-// 나이트 움직이기
+# 나이트 움직이기
 
 input_data = input() # a1을 입력받기
 row = int(input_data[1])
@@ -13,3 +13,7 @@ for step in steps: # 파이썬의 for은 횟수반복문이면서 in이라는 �
     if next_row >= 1 and next_row <= 8 and next_column >= 1 and next_column <=8:
         cnt += 1
 print(cnt)
+
+# 유닛의 자동 이동
+
+n, m = map(int, input().split()
