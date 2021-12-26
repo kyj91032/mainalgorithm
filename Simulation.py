@@ -49,7 +49,7 @@ while True: # 시뮬레이션 시작
         y = ny
         count += 1
         turn_time = 0
-        continue
+        continue # 조건에 따라, 처음부터 다시 
     else: # 회전한 이후 정면에 가보지 않은 칸이 없거나 바다인 경우
         turn_time += 1
     if turn_time == 4: # 네 방향 모두 갈 수 없는 경우
