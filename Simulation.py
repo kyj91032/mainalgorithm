@@ -31,7 +31,7 @@ for i in range(n):
 dx = [-1, 0, 1, 0] # 북, 동, 남, 서 방향 정의
 dy = [0, 1, 0, -1]
 
-def turn_left(): # 왼쪽으로 회전 함수. 완전탐색(시뮬레이션)에서 함수의 이용. 반복되는 동작이므로 효율적임
+def turn_left(): # 왼쪽으로 회전 함수. **완전탐색(시뮬레이션)에서 함수의 이용. 반복되는 동작이므로 효율적임
     global direction
     direction -= 1
     if direction == -1:
@@ -41,7 +41,7 @@ count = 1 # 방문 횟수
 turn_time = 0
 while True: # 시뮬레이션 시작
     turn_left() # 왼쪽으로 회전
-    nx = x + dx[direction] # 회전만 하기, 회전하고 이동하기 동작을 분리하는 과정에서 nx와 ny 변수 추가.
+    nx = x + dx[direction] # 회전만 하기, 회전하고 이동하기 **동작을 분리**하는 과정에서 nx와 ny 변수 추가.
     ny = y + dy[direction]
     if d[nx][ny] == 0 and array[nx][ny] == 0: # 회전한 이후 정면에 가보지 않은 칸이 존재하는 경우 이동.
         d[nx][ny] = 1
