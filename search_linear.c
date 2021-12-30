@@ -11,3 +11,15 @@ int search(const int a[], int n, int key)
 		i++;
 	}
 }
+
+int search_sentinelvalue(const int a[], int n, int key)
+{
+	int i = 0;
+	a[n] = key; //키 값을 배열의 맨 끝 공간에 추가
+	while(1){
+		if(a[i] == key) // key와 일치하는가 확인. 일치하면 인덱스 리턴
+			break;
+		i++;	
+	}
+	return i == n ? -1 : i; // 보초로 종료되었는지, 검색 성공으로 종료되었는지에 따라 
+}
