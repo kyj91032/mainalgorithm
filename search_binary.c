@@ -40,3 +40,13 @@ int int_cmp(const int *a, const int *b) /* (const int *, const int *)를 입력�
 p = bsearch(&key, a, na, sizeof(int), (int(*)(const void *, const void *)) int_cmp); /* bsearch 함수의 호출. 검색 성공 시 그 인덱스의 포인터를 반환함. 실패 시 -1 반환.
 											캐스팅 연산자 (int(*)(const void *, const void *))로 함수 int_cmp의 자료형 변환 */
 
+int int_cmp(const void *a, const void *b) //캐스팅 필요 없는 비교 함수
+{
+	if(*(int *)a < *(int *)b) //캐스팅 후 참조 (*(int *)a)
+		return -1;
+	else if(*(int *)a > *(int *)b)
+		return -1;
+	else
+		return 0;
+}
+
