@@ -1,26 +1,21 @@
-# DFS
+# DFS의 동작 과정과 코드
 '''
-구체적인 동작 과정
+구체적인 동작 과정 (스택)
 1. 탐색 시작 노드를 스택에 삽입하고 방문 처리를 한다.
 2. 스택의 최상단 노드에, 방문하지 않은 인접 노드가 있으면 그 인접 노드를 스택에 넣고 방문 처리를 한다.
    방문하지 않은 인접 노드가 없으면 스택에서 최상단 노드를 꺼낸다.
-3. 
-
 '''
-
-
-def dfs(graph, v, visited):
-  visited[v] = True #현재 노드 방문처리
-  print(v, end = ' ') #방문한 노드 출력
-  for i in graph[v]:
-    if not visited[i]:
+#(재귀)
+def dfs(graph, v, visited): #깊이 우선 탐색 함수 정의. 매개변수(그래프 graph, 노드 포인터 v, 방문 기억 공간 visited[v] = 0 or 1)
+  visited[v] = True # 1. 노드 v를 방문처리(=스택에 push)
+  print(v, end = ' ')
+  for i in graph[v]: # 2. 방문하지 않은 인접 노드들 graph[v]를 차례로 똑같이 방문처리
+    if not visited[i]: # 인접 노드들 중 방문하지 않은 인접노드가 없을 시 함수는 끝나므로(=최상단 스택이 pop) 최후방 함수의 호출이 종료.
       dfs(graph, i, visited)
-  
 
 
 
-
-graph = [ #인접 리스트 방식으로 그래프 표현.
+graph = [ #인접 리스트 방식(?)으로 그래프 표현.
   [],
   [2, 3, 8],
   [1, 7],
@@ -31,7 +26,7 @@ graph = [ #인접 리스트 방식으로 그래프 표현.
   [2, 6, 8],
   [1, 7]
 ]
+visited = [False] * 9 #방문 정보 데이터 리스트로 초기화.
+dfs(graph, 1, visited) #DFS
 
-visited = [False] * 9 #방문 정보 데이터 리스트로.
-
-dfs(graph, 1, visited)
+#결과 1 2 7 6 8 3 4 5
