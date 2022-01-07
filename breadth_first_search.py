@@ -29,5 +29,36 @@ graph = [ #인접 리스트 방식(?)으로 그래프 표현.
 ]
 visited = [False] * 9 #방문 정보 데이터 리스트로 초기화.
 bfs(graph, 1, visited) #BFS
-
 # 결과 1 2 3 8 7 4 5 6
+
+
+# 미로 탈출. bfs예제 (dfs랑 뭐가 다른거지..)
+from collections import deque
+
+n, m = map(int, input().split())
+
+graph = []
+for i in range(n):
+	graph.append(list(map(int, input())))
+
+dx = [-1, 1, 0, 0] # 인접 노드 포인터를 얻기 위함.
+dy = [0, 0, -1, 1]
+
+def bfs(x, y):
+	queue = deque()
+	queue.append((x, y))
+	while queue:
+		x, y = queue.popleft() # 
+		for i in range(4): # 현재 위치에서 네 방향 
+			nx = x + dx[i]
+			ny = y + dy[i]
+			if nx < 0 or ny < 0 or nx >= n or ny >= m:
+				continue
+			if graph[nx][ny] == 0:
+				continue
+			if graph[nx][ny] == 1:
+				graph[nx][ny] = graph[x][y] + 1 # 최단 거리 기록
+				queue.append((nx, ny))
+	return graph[n - 1][m - 1]
+
+print(bfs(0, 0))
