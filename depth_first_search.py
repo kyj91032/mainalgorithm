@@ -1,17 +1,19 @@
 # DFS의 동작 과정과 코드
 '''
-구체적인 동작 과정: 인접 노드를 시작으로 깊게 방문하면서 전체를 점령함 (스택).
-1. 탐색 시작 노드를 스택에 삽입하고 방문 처리를 한다.
-2. 스택의 최상단 노드에, 방문하지 않은 인접 노드가 있으면 그 인접 노드를 스택에 넣고 방문 처리를 한다.
-   방문하지 않은 인접 노드가 없으면 스택에서 최상단 노드를 꺼낸다.
+구체적인 동작 과정: 인접 노드를 시작으로 깊게 기억하면서 전체를 점령함 (stack).
+
+1. 탐색 시작 노드를 스택에 삽입하고 기억 처리를 한다.(push호출과 기억처리)
+2. 스택의 최상단 노드에, 기억하지 않은 인접 노드가 있으면 그 인접 노드를 스택에 넣고 기억 처리를 한다.(인접노드 push호출(재귀)과 기억처리)
+3. 기억하지 않은 인접 노드가 없으면 스택에서 최상단 노드를 꺼낸다.(pop종료)
 '''
 #(재귀)
-def dfs(graph, v, visited): #깊이 우선 탐색 함수 정의. 매개변수(그래프 graph, 노드 포인터 v, 방문 기억 공간 visited[v] = 0 or 1)
-  visited[v] = True # 1. 노드 v를 방문처리(=스택에 push)
+def dfs(graph, v, visited): #깊이 우선 탐색 함수 정의. 매개변수(그래프 graph, 노드 포인터 v, 기억 공간 visited[v] = 0 or 1)
+  visited[v] = True # 1. 탐색 시작 노드 v를 스택에 삽입하고, 기억처리를 한다.
   print(v, end = ' ')
-  for i in graph[v]: # 2. 방문하지 않은 인접 노드들 graph[v]를 차례로 똑같이 방문처리
-    if not visited[i]: # 인접 노드들 중 방문하지 않은 인접노드가 없을 시 함수는 끝나므로(=최상단 스택이 pop) 최후방 함수의 호출이 종료.
-      dfs(graph, i, visited)
+  for i in graph[v]: # 2. 최상단 노드 v의 인접 노드들 graph[v]에서
+    if not visited[i]: # 기억하지 않은 인접 노드가 있으면 
+      dfs(graph, i, visited) # 그 인접 노드를 스택에 넣고 기억처리 한다(재귀).
+			     # 3. 인접 노드들 중 기억하지 않은 인접노드가 없을 시 함수는 끝나므로(=최상단 스택이 pop) 최후방 함수의 호출이 종료.
 
 graph = [ #인접 리스트 방식(?)으로 그래프 표현.
   [],
@@ -37,17 +39,17 @@ graph = []
 for i in range(N):
 	graph.append(list(map(int, input()))) # **map은 iteralbe의 요소마다 지정된 함수를 적용시켜준다. list(string)은 각 문자가 요소가 되는 리스트로 변환된다.
 
-def dfs(x, y): # dfs의 매개변수. 1. graph. (한 개로 정해져 있으니 매개변수로 넣지 않아도 됨) 2. 노드 포인터 x, y 3. 방문처리(= 얼음 여부 0, 1)
+def dfs(x, y): # dfs의 매개변수. (graph(한 개로 정해져 있으니 매개변수로 넣지 않아도 됨), 노드 포인터 (x, y), 방문처리(= 얼음 여부 0, 1))
 	if x <= -1 or x >= n or y <= -1 or y >= m:
 		return False
-	if graph[x][y] == 0: # 노드 x, y가 얼음이면(방문처리가 안됬으면),
-		graph[x][y] = 1 # 틀로 바꾸기(방문처리)
-		dfs(x - 1, y) # 상 하 좌 우 방향에 대해 모두 재귀함수 시행.
+	if graph[x][y] == 0: # push호출과
+		graph[x][y] = 1 # 기억처리
+		dfs(x - 1, y) # 인접노드 push호출과 기억처리
 		dfs(x, y - 1)
 		dfs(x + 1, y)
 		dfs(x, y + 1)
 		return True
-	return False # 노드 x, y가 틀일 때.
+	return False # pop종료 (노드 x, y가 기억처리 되어있을 때)
 
 result = 0
 for i in range(n):
