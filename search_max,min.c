@@ -21,4 +21,17 @@ data = list(map(int, input().split())
 min_value = a //초기값 부여
 for i in data:
 	min_value = min(min_value, i) //min(이전값, 현재값) 으로 계속 최솟값 최신화
+	
+	
+# search_min_index. 최솟값의 인덱스를 구하는 알고리즘
+
+array = [7, 5, 9, 0, 3, 1, 6, 2, 4, 8]
+min_index = 0
+
+for i in range(len(array)):
+	if array[min_index] > array[i]: # 최소 갱신.
+		min_index = i # 최솟값의 인덱스 저장.
+
+print(min_index) # 결과 3
+
 */
