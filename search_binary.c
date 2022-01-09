@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int binary_search(const int a[], int n, int key) //전제는 "정렬된 데이터". key와의 "크기 판단"으로 검색 범위를 좁히는 것이기 때문.
+int binary_search(const int a[], int n, int key) //전제는 "정렬된 데이터". key와의 대소비교로 검색 범위를 좁히는 것이기 때문.
 {
 	int pl = 0;
 	int pr = n - 1;
