@@ -11,3 +11,26 @@ for i in range(len(array)): # 정렬하기 위한 맨 앞부터의 인덱스
   array[i], array[min_index] = array[min_index], array[i] # min_index와 i의 요소를 swap **파이썬 swap : 특정한 리스트가 주어졌을 때 두 변수의 위치를 변경하는 작업. 
 
 print(array)
+
+
+'''
+// c언어에서 선택정렬
+
+#include <stdio.h>
+#include <stdlib.h>
+#define swap(type,x,y) do{type t=x; x=y; y=t;} while(0) // 매크로 정의 함수. swap정의
+
+int selection(int a[], int n)
+{
+  int i, j;
+  for(i=0; i < n-1; i++) {
+    int min = j;
+    for(j = i+1; j < n; j++){
+      if(a[j] < a[min])
+        min = j;
+    }
+    swap(int, a[i], a[min]);
+  }
+}
+
+'''
