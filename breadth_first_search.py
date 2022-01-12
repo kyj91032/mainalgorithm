@@ -1,4 +1,4 @@
-#BFS의 동작 과정과 코드
+# BFS의 동작 과정과 코드
 '''
 구체적인 탐색 과정: 인접 노드들을 우선으로 기억하면서 전체를 점령함 (queue).
 
@@ -6,19 +6,19 @@
 2. 큐에서 노드를 꺼낸다.(deque)
 3. 해당 노드의 인접 노드 중에서 기억하지 않은 노드를 모두 큐에 삽입하고 기억 처리를 한다.(인접노드 enque와 기억처리)
 '''
-def bfs(graph, start, visited): # 너비 우선 탐색 함수 정의. 매개변수(그래프 graph, 노드 포인터 v, 기억 공간 visited[v] = 0 or 1)
+def bfs(graph, start, visited): # 너비 우선 탐색 함수 정의. 매개변수(그래프 graph, 노드 포인터 v, 기억 공간 visited[v] = 0 or 1) 하나로 정해져 있는 건 매개변수 안써도 됨.
   queue = deque([start]) # 1. 탐색 시작 노드를 큐에 enque하고
   visited[start] = True # 기억 처리를 한다.
   while queue:
     v = queue.popleft() # 2. 큐에서 노드를 deque하고
     printf(v, end = ' ')
     for i in graph[v]: # 해당 노드의 인접 노드들 중에서
-      if not visited[i]: # 기억하지 않은 노드를
+      if not visited[i]: # 기억처리 안되어있는 노드를
         queue.append(i) # 큐에 enque하고
         visited[i] = True # 기억 처리를 한다.
 
 
-graph = [ #인접 리스트 방식(?)으로 그래프 표현.
+graph = [ # 인접 리스트 방식.
   [],
   [2, 3, 8],
   [1, 7],
@@ -29,8 +29,8 @@ graph = [ #인접 리스트 방식(?)으로 그래프 표현.
   [2, 6, 8],
   [1, 7]
 ]
-visited = [False] * 9 #방문 정보 데이터 리스트로 초기화.
-bfs(graph, 1, visited) #BFS
+visited = [False] * 9 # 방문 정보 데이터 리스트로 초기화.
+bfs(graph, 1, visited) # BFS
 # 결과 1 2 3 8 7 4 5 6
 
 
@@ -46,7 +46,7 @@ for i in range(n):
 dx = [-1, 1, 0, 0] # 인접 노드 포인터를 얻기 위함.
 dy = [0, 0, -1, 1]
 
-def bfs(x, y): # bfs의 매개변수. (graph(한 개로 정해져 있으니 받을 필요 없음), 노드 포인터 (x, y), 방문처리 (0, 1+ 최단거리기록))
+def bfs(x, y): # bfs의 매개변수: 시작 노드 포인터 (x, y)
 	queue = deque()
 	queue.append((x, y)) # enque와 기억처리
 	while queue:
