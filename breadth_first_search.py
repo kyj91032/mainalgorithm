@@ -58,7 +58,7 @@ def bfs(x, y): # bfs의 매개변수. (graph(한 개로 정해져 있으니 받�
 				continue
 			if graph[nx][ny] == 0:
 				continue
-			if graph[nx][ny] == 1:
+			if graph[nx][ny] == 1: # 해당 노드를 처음 방문하는 경우에만 최단거리 기록(이전 노드 거리기록+1).
 				queue.append((nx, ny)) # 인접노드 enque와
 				graph[nx][ny] = graph[x][y] + 1 # 기억처리(최단거리 기록) **따로 변수 설정하면 중복되서 값이 더 크게 나옴.
 	return graph[n - 1][m - 1] # 최단거리 리턴.
