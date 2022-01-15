@@ -6,7 +6,8 @@
 2. 큐에서 노드를 꺼낸다.(deque)
 3. 해당 노드의 인접 노드 중에서 탐색하지 않은 노드를 모두 큐에 삽입하고 탐색 처리를 한다.(인접노드 enque와 탐색처리)
 '''
-def bfs(graph, start, visited): # 너비 우선 탐색 함수 정의. 매개변수(그래프 graph, 노드 포인터 v, 기억 공간 visited[v] = 0 or 1) 하나로 정해져 있는 건 매개변수 안써도 됨.
+# bfs 함수 정의. 매개변수(그래프 graph, 노드 포인터 v, 기억 공간 visited[v] = 0 or 1) 정해져 있는 건 매개변수로 안써도 됨.
+def bfs(graph, start, visited):
   queue = deque([start]) # 1. 탐색 시작 노드를 큐에 enque하고
   visited[start] = True # 탐색 처리를 한다.
   while queue: # 큐가 비면 종료.
