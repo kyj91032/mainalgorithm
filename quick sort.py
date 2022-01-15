@@ -1,4 +1,4 @@
-# 퀵 정렬: 기준 데이터를 설정하여, 교체를 반복해 분할하고 분할을 반복해(재귀) 정렬하는 알고리즘.
+# 퀵 정렬: 기준 데이터를 설정하여, swap 반복해 분할하고 분할을 반복해(재귀) 정렬하는 알고리즘.
 
 array = [5, 7, 9, 0, 3, 1, 6, 2, 4, 8]
 
@@ -13,9 +13,9 @@ def quick_sort(array, start, end):
       left += 1
     while right > start and array[right] >= array[pivot]: # right가 start에 가면 혹은 right가 피벗보다 작은 값을 찾았다면 종료
       right -= 1
-    if left > right: # 엇갈렸다면 right와 피벗을 교체. (right가 피벗 위치(맨 앞)으로 가야 
+    if left > right: # 엇갈렸다면 right와 피벗을 swap. (엇갈렸을 때 구조적으로 피벗은 right쪽에 있기 때문에, right와 swap해야 분할이 됨.)
       array[right], array[pivot] = array[pivot], array[right]
-    else:
+    else: # 엇갈리지 않았다면 left와 right를 swap.
       array[left], array[right] = array[right], array[left]
   quick_sort(array, start, right - 1)
   quick_sort(array, left + 1, end)
