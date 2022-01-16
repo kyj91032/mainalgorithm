@@ -55,4 +55,29 @@ void quick(int a[], int left, int right)
 	if(pl < right) quick(a, pl, right);
 }
 
+
+// qsort 함수 (stdlib.h)
+
+void qsort(void *base, size_t nmemb, size_t size, int(*compar)(const void *, const void *));
+// 1. 정렬할 배열(동적 메모리)의 주소, 2. 배열 요소 개수, 3. 배열 요소 크기
+// 4. 비교 함수 포인터. 가인수 compar은 비교함수의 주소를 받는다. 그 함수는 (const void *, const void *)를 입력받고 int를 반환하는 함수이어야 한다.
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int int_cmp(const int *a, const int *b)
+{
+	if(*a < *b)
+		return -1;
+	else if(*a > *b)
+		return 1;
+	else
+		return 0;
+}
+
+
+qsort(x, nx, sizeof(int), (int(*)(const void *, const void *))int_cmp); /* qsort 함수의 호출. 배열 x를 정렬시킴.
+									   캐스팅 연산자 (int(*)(const void *, const void *))로 함수 int_cmp의 자료형 변환 */
+
 '''
