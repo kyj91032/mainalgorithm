@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int binary_search(const int a[], int n, int key) //전제는 "정렬된 데이터". key와의 대소비교로 검색 범위를 좁히는 것이기 때문.
+int binary_search(const int a[], int n, int key) // 전제는 "정렬된 데이터". key와의 대소비교로 검색 범위를 좁히는 것이기 때문. 2분의 1씩 줄여나가므로 O(logN).
 {
 	int pl = 0;
 	int pr = n - 1;
@@ -40,9 +40,9 @@ int int_cmp(const int *a, const int *b) /* (const int *, const int *)를 입력�
 p = bsearch(&key, a, na, sizeof(int), (int(*)(const void *, const void *)) int_cmp); /* bsearch 함수의 호출. 검색 성공 시 그 인덱스의 포인터를 반환함. 실패 시 -1 반환.
 											캐스팅 연산자 (int(*)(const void *, const void *))로 함수 int_cmp의 자료형 변환 */
 
-int int_cmp(const void *a, const void *b) //캐스팅 필요 없는 비교 함수
+int int_cmp(const void *a, const void *b) // 캐스팅 필요 없는 비교 함수
 {
-	if(*(int *)a < *(int *)b) //캐스팅 후 참조 (*(int *)a)
+	if(*(int *)a < *(int *)b) // 캐스팅 후 참조 (*(int *)a)
 		return -1;
 	else if(*(int *)a > *(int *)b)
 		return -1;
@@ -50,3 +50,34 @@ int int_cmp(const void *a, const void *b) //캐스팅 필요 없는 비교 함�
 		return 0;
 }
 
+
+/*
+# 파이썬에서 이진 탐색
+
+재귀 함수로 구현.
+
+def binary_search(array, target, start, end):
+	if start > end:
+		return None # 재귀함수의 종료조건
+	mid = (start + end) / 2
+	if array[mid] == target:
+		return mid
+	else if array[mid] > target:
+		return binary_search(array, target, start, mid - 1)
+	else:
+		return binary_search(array, target, mid + 1, end)
+
+반복문으로 구현.
+
+def binary_search(array, target, start, end):
+	while start <= end:
+		mid = (start + end) // 2 # 반복 조건
+		if array[mid] == target:
+			return mid
+		elif array[mid] > target:
+			end = mid - 1
+		else:
+			start = mid + 1
+	return None
+
+*/
