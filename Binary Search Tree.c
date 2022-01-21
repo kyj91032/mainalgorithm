@@ -13,7 +13,7 @@ typedef struct __bnode {
 } BinNode;
 
 
-static BinNode *AllocBinNode (void)
+static BinNode *AllocBinNode(void)
 {
 	return calloc(1, sizeof(BinNode));
 }
