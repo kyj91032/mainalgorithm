@@ -81,3 +81,33 @@ def binary_search(array, target, start, end):
 	return None
 
 */
+
+/* 예제 1: 최적의 절단 길이 구하기 (순차탐색이라는 것을 인지 후 이진탐색으로 접근)
+
+n, m = list(map(int, input().split(' '))) # 떡의 개수(N)와 요청한 떡의 길이(M)을 입력
+array = list(map(int, input().split())) # 각 떡의 개별 높이 정보를 입력
+
+start = 0 # 이진 탐색을 위한 시작점과 끝점 설정
+end = max(array)
+
+# 이진 탐색 수행 (반복적)
+result = 0
+while(start <= end):
+    total = 0 # 떡의 절단 길이(누적변수)
+    mid = (start + end) // 2
+    for x in array: # 현재 mid 에서 total 계산
+        if x > mid:
+            total += x - mid
+    if total < m: # 떡볶이 양이 m보다 적은 경우 더 자르기 (왼쪽 부분 탐색)
+        end = mid - 1
+    elif total == m:
+    	result = mid
+	break
+    else: # 떡볶이 양이 m보다 많은 경우 덜 자르기 (오른쪽 부분 탐색)
+        result = mid # 결국 마지막 덜 자른 순간이 높이가 최대인 순간이 되므로(왼쪽 탐색 후 바로 total == m 인 순간을 제외하면), 여기에서 result에 기록
+        start = mid + 1
+
+# 정답 출력
+print(result)
+
+*/
