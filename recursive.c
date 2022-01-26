@@ -6,13 +6,13 @@
 
 /* 파이썬에서 재귀함수
 
-def factorial_iterative(n): # 반복문으로 구현한 n!
+def factorial_iterative(n): # 반복문으로 구현한 n!. 바텀 업
   result = 1 # 누적변수
   for i in range(1, n + 1):
     result *= i
   return result
 
-def factorial_recursive(n): # 재귀적으로 구현한 n!. 재귀함수가 수학의 점화식(특정한 함수를 자신보다 더 작은 변수에 대한 함수와의 관계로 표현한 것)을 그대로 소스코드로 옮긴 것.
+def factorial_recursive(n): # 재귀적으로 구현한 n!. 탑 다운. 재귀함수가 수학의 점화식(특정한 함수를 자신보다 더 작은 변수에 대한 함수와의 관계로 표현한 것)을 그대로 소스코드로 옮긴 것.
                             # 점화식의 초기조건은 재귀함수의 종료조건이다. n이 0 혹은 1일때 fac(n)이 1인 것.
   if n <= 1: # 재귀함수의 종료조건. 재귀함수 내에서 특정 조건일 때 더 이상 재귀적으로 함수를 호출하지 않고 종료하도록 if문을 이용하여 꼭 종료조건을 구현해주어야 한다. 
     result 1
