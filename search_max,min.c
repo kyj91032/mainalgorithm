@@ -17,6 +17,7 @@ int max(const int a[], int n) {
 /*
 파이썬에서.
 
+# 최대최소 최신화하며 구하는 방법. 자료구조 변수 하나면 됨. 원래는 리스트에 모아놓고 min max함수
 data = list(map(int, input().split())
 min_value = a //초기값 부여
 for i in data:
