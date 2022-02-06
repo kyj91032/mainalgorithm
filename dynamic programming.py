@@ -65,9 +65,51 @@ for i in range(2, n):
 print(d[n - 1])             
 
 
-# 
+# 효율적인 화폐 구성: 단위마다 d.p 반복
+             
+n, m = map(int, input().split())
+array = []
+for i in range(n):
+    array.append(int(input()))
+# f(i) = ai = i원의 화폐 구성 최적의 해
+# 점화식: for(ai = min(ai, ai-k + 1))
 
+d = [10001] * (m + 1) # 
 
+d[0] = 0   # 초깃값
+for i in range(n):  # 단위마다 dp를 반복
+    for j in range(array[i], m + 1):
+        if d[j - array[i]] != 10001:  # (i - k)원을 만드는 방법이 존재하는 경우
+            d[j] = min(d[j], d[j - array[i]] + 1) # 최소 선택.
+
+if d[m] == 10001: # 최종적으로 M원을 만드는 방법이 없는 경우
+    print(-1)
+else:
+    print(d[m])
+             
+             
+# 효율적인 화폐 구성: 단위 한꺼번에 d.p
+
+n, m = map(int, input().split())
+
+array = []
+for _ in range(n):
+	array.append(int(input()))
+	
+d = [10001] * (m + 1)
+
+d[0] = 0
+
+for i in range(array[0], m + 1):
+	for j in range(0, n):
+		if i - array[j] >= 0:
+			d[i] = min(d[i], d[i - array[j]] + 1)
+	if d[i] == 10001:
+		print(-1)
+		break
+
+if d[i] != 10001:
+	print(d[m])
 
 
 
