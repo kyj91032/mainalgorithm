@@ -28,7 +28,7 @@ parent = [0] * (v + 1) # 부모 테이블
 for i in range(1, v + 1): # 부모 테이블 초기화
   parent[i] = i
 
-edges = []
+edges = [] # 간선 정렬을 위한 
 result = 0
 
 for _ in range(e):
