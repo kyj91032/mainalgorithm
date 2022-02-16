@@ -18,7 +18,7 @@ def find_parent(parent, x):
 def union_parent(parent, a, b): # 두 원소가 속한 집합을 합치는 union 함수(= 최종적으로 disjoint set을 새로 만드는 함수. 그래프에서 부모 테이블을 고려하면 disjoint set임).
   a = find_parent(parent, a) # 원소 a의 루트
   b = find_parent(parent, b) # 원소 b의 루트
-  if a > b:
+  if a < b:
     parent[b] = a # 루트 노드의 번호가 더 작은 집합을 부모로 합침.
   else:
     parent[a] = b
